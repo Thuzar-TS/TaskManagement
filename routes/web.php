@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('/tasklist', 'TasklistController');
+// Route::get('/tasklist/create','TasklistController@create');
+// Route::post('/tasklist','TasklistController@store');
+
