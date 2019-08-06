@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 <style>
@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Edit Access
+    Edit Access Name
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -20,14 +20,14 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('permissions.update', $permission->id) }}">
+      <form method="post" action="{{ route('permissions.update', $permissions->id) }}">
           <div class="form-group">
               @csrf
               @method('PATCH')
-              <label for="name">AccessName:</label>
-              <input type="text" class="form-control" name="access" value="{{$permission->access}}"/>
+              <label for="name">Access Name:</label>
+              <input type="text" class="form-control" name="access" value="{{$permissions->access}}"/>
           </div>
-          <button type="submit" class="btn btn-primary">Update Access</button>
+          <button type="submit" class="btn btn-success">Update Access Name</button>
       </form>
   </div>
 </div>

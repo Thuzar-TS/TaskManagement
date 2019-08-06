@@ -1,10 +1,12 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-<div class="card uper">
-  <div class="card-header">
- Add Access
-  </div>
+<style>
+  .uper {
+    margin-top:40px;
+  }
+</style>
+<div class="uper">
   <div class="card-body">
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -18,10 +20,10 @@
       <form method="post" action="{{ route('permissions.store') }}">
           <div class="form-group">
               @csrf
-              <label for="name">Access :</label>
-              <input type="text" class="form-control" name="access"/>
+              <label for="name">Access Name:</label>
+              <input type="text" class="form-control" name="access" autofocus/>
           </div>
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-success">Create Access Name</button>
       </form>
   </div>
 </div>

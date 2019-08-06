@@ -11,10 +11,9 @@
       {{ session()->get('success') }}
     </div><br />
   @endif
-<<table class="table table-striped">
+  <table class="table table-striped">
     <thead>
         <tr>
-        <td>ID</td>
           <td>Access Name</td>
           <td colspan="2">Action</td>
         </tr>
@@ -24,9 +23,9 @@
         <tr>
             <td>{{$permission->id}}</td>
             <td>{{$permission->access}}</td>
-            <td><a href="{{ route('permissions.edit',$permission->id)}}" class="btn btn-primary"></a>Edit</td>
+            <td><a href="{{ route('permissions.edit',$permission->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
-                <form action="{{ route('permissions.destroy',$permission->id)}}" method="post">
+                <form action="{{ route('permissions.destroy', $permission->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
@@ -36,4 +35,5 @@
         @endforeach
     </tbody>
   </table>
-  @endsection
+<div>
+@endsection

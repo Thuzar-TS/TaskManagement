@@ -15,8 +15,9 @@ class PermissionController extends Controller
     public function index()
     {
         //
-        $permissions =Permission::all();
-        return view('permissions.index',compact('permissions'));
+        $permissions = Permission::all();
+
+      return view('permission.index', compact('permissions'));
     }
 
     /**
@@ -27,8 +28,7 @@ class PermissionController extends Controller
     public function create()
     {
         //
-        return view('permissions.create');
-
+        return view('permission.create');
     }
 
     /**
@@ -40,13 +40,12 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         //
-         $validatedData = $request->validate([
+        $validatedData = $request->validate([
             'access' => 'required|max:255',
-         ]);
-         $permission =Permission::create($validatedData);
-         return redirect('/permissions')->with('success', 'Access is Successfully saved');
+        ]);
+        $permissions = Permission::create($validatedData);
 
-
+        return redirect('/permissions')->with('success', 'Access Name is successfully saved');
     }
 
     /**
@@ -57,7 +56,7 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        //
+       //
     }
 
     /**
@@ -68,8 +67,10 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $permission = Permission::findOrFail($id);
-     return view('permissions.edit',compact('permission'));
+        //
+        $permissions = Permission::findOrFail($id);
+
+     return view('permission.edit', compact('permissions'));
     }
 
     /**
@@ -81,14 +82,14 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
         $validatedData = $request->validate([
-             'access' => 'required|max:255',
+            'access' => 'required|max:255',
+        ]);
+         Permission::whereId($id)->update($validatedData);;
 
-         ]);
-         Permission::whereId($id)->update($validatedData);
-
-         return redirect('/permissions')->with('success', 'Access is successfully updated');
-      }
+        return redirect('/permissions')->with('success', 'Access Name is successfully updated');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -99,9 +100,8 @@ class PermissionController extends Controller
     public function destroy($id)
     {
         //
-        $permission = Book::findOrFail($id);
-        $permission->delete();
-
-      return redirect('/permissions')->with('success', 'Access is successfully deleted');
+        $permissions = Permission::findOrFail($id);
+        $permissions->delete();
+        return redirect('/permissions')->with('success', 'Access Name is successfully deleted');
     }
 }
