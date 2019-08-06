@@ -18,6 +18,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+            .modal-content{
+                margin-top : 250px;
+            }
+            .uper{
+                justify-content: center;
+                margin:0 auto;
+                width: 800px;
+                height: 400px;
+                padding:30px;
+
+            }
+    </style>
 </head>
 <body>
     <div id="app">
