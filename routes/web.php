@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('profile','profile\ProfileController');
+Route::get('getProfile','profile\ProfileController@getData');
+Route::get('profile/delete/{id}','profile\ProfileController@destroy');

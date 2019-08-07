@@ -5,7 +5,7 @@ use Faker\Factory as Faker;
 use App\Models\Task;
 use App\Models\Project;
 use App\Models\User;
-
+use App\Models\Profile;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -35,6 +35,19 @@ class DatabaseSeeder extends Seeder
             $project->description = $faker->paragraph();
             $project->user_id = rand(1, 2);
             $project->save();
+        }
+
+        for ($i=0; $i < 10; $i++) { 
+            $profile = new Profile();
+            $profile->user_id = rand(1, 10);
+            $profile->photo_url = $faker->image('public/images',640,480, null, false);
+            $profile->address = $faker->sentence();
+            $profile->phone = '+95'.rand(1111111,9999999);
+            $profile->git = 'https://'.Str::random(10).'.com';
+            $profile->skype = 'https://'.Str::random(10).'.com';
+            $profile->created_at = '2019-08-02';
+            $profile->updated_at = '2019-08-02';
+            $profile->save();
         }
 
         $user = new User();
