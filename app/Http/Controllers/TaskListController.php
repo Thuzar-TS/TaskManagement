@@ -73,8 +73,10 @@ class TaskListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tasklist=TaskList::findOrfail($id);
+        return view('tasklist.edit',compact('tasklist'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -85,7 +87,24 @@ class TaskListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'project_id'  => 'required',
+            'task_id' => 'required',
+          
+
+        ]);
+
+        $task = TaskList::find($id); 
+
+        $task->name = $request->name;
+        $task->project_id = $request->project_id;
+        $task->task_id = $request->task_id;
+        
+        $task->save();
+
+    
+        return redirect()->route('tasklist.index')->with('success','Project successsful updated');
     }
 
     /**
@@ -96,6 +115,10 @@ class TaskListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        {
+            $tasklist = TaskList::findOrfail($id);
+            $tasklist -> delete();
+            return redirect()->route('tasklist.index')->with('success','tasklist successsfully Deleted');
+        }
     }
 }

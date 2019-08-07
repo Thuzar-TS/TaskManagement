@@ -20,7 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::resource('/tasklist', 'TasklistController');
-// Route::get('/tasklist/create','TasklistController@create');
-// Route::post('/tasklist','TasklistController@store');
-
+Route::get('/tasklist','TasklistController@index')->name('tasklist.index');
+Route::get('/tasklist/create','TasklistController@create')->name('tasklist.create');
+Route::post('/tasklist/store','TasklistController@store')->name('tasklist.store');
+Route::get('/tasklist/{id}','TasklistController@show')->name('tasklist.show');
+Route::get('/tasklist/{id}/edit','TasklistController@edit')->name('tasklist.edit');
+Route::put('/tasklist/{id}','TasklistController@update')->name('tasklist.update');
+Route::delete('/tasklist/{id}','TasklistController@destroy')->name('tasklist.destroy');

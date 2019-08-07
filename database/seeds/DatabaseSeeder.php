@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Models\Task;
+use App\Models\TaskList;
 use App\Models\Project;
 use App\Models\User;
 
@@ -27,6 +28,16 @@ class DatabaseSeeder extends Seeder
             $task->due_date = '2019-08-02';
             $task->end_date = '2019-08-02';
             $task->save();
+        }
+
+        for ($i=0; $i < 10; $i++) { 
+            $tasklist = new TaskList();
+            $tasklist->name = $faker->sentence();
+            // $task->description = $faker->paragraph();
+            $tasklist->project_id = rand(1, 10);
+            $tasklist->task_id = rand(1, 10);
+            // $tasklist->user_id = rand(1, 2);            
+            $tasklist->save();
         }
 
         for ($i=0; $i < 10; $i++) { 
